@@ -451,58 +451,33 @@ namespace SFT
             return cmd.Substring(0, space).ToUpper(CultureInfo.InvariantCulture);
         }
 
+        private void CommandHelp(string command, string explanation)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"{command} - ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(explanation);
+        }
+
         private void Help()
         {
+            ConsoleColor prevColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("List of Commands (case insensitive):");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ CONNECT | OPEN } IPAddress - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Connect to server with specified IP address");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ DISCONNECT | DISCO } - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Disconnect from server.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ UPLOAD | UP } SrcPath [ DstFile ] - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Upload a file from the client to the server. SrcPath is the file path to the source file to be uploaded. If there are spaces in SrcPath, it should have the \" character at the beginnig and the end of it. DstFile is optional file name for the destination file. By default the destination file name is taken from SrcPath. The file is always uploaded to the current directory on the server. It is not possible to specify file path in DstFile.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("DOWNLOAD SrcFile [ DstPath ] - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Download a file from the server to the client. The downloaded file should exist in the current directory of the server. It is not possible to specify path in SrcFile. DstPath is optional path to the destination file. By default the file is downloaded to the local current directory on the client with the same name.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("DIR - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Prints the content of the current directory on the server.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("CD [ DirName ] - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Changes the current directory on the server. DirName is oprtional. If DirName is not specified, the directory remains the same and printed on the console. DirName cannot contain path, only the name of one directory, or .. to change to one directory level up.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ MKDIR | MD } DirName - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Create a new directory in the current directory on the server. DirName cannot contain path, only directory name.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ RMDIR | RD } DirName - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Remove a directory from the current directory on the server. DirName cannot contain path, only directory name. The directory should be empty or the operation will fail.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("DEL FileName - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Delete a file from the current directory on the server. Filename cannot contain path, only file name.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("LCD [ Path ] - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Change curernt local directory on the client. The path is optional. If it is missing then the current local directory on the client is printed to the console.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("{ HELP | ? } - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Print this help message.");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("!command - ");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Executes the specified command on the client.");
+            CommandHelp("{ CONNECT | OPEN } IPAddress", "Connect to server with specified IP address");
+            CommandHelp("{ DISCONNECT | DISCO }", "Disconnect from server.");
+            CommandHelp("{ UPLOAD | UP } SrcPath [ DstFile ]", "Upload a file from the client to the server. SrcPath is the file path to the source file to be uploaded. If there are spaces in SrcPath, it should have the \" character at the beginnig and the end of it. DstFile is optional file name for the destination file. By default the destination file name is taken from SrcPath. The file is always uploaded to the current directory on the server. It is not possible to specify file path in DstFile.");
+            CommandHelp("DOWNLOAD SrcFile [ DstPath ]", "Download a file from the server to the client. The downloaded file should exist in the current directory of the server. It is not possible to specify path in SrcFile. DstPath is optional path to the destination file. By default the file is downloaded to the local current directory on the client with the same name.");
+            CommandHelp("DIR", "Prints the content of the current directory on the server.");
+            CommandHelp("CD [ DirName ]", "Changes the current directory on the server. DirName is oprtional. If DirName is not specified, the directory remains the same and printed on the console. DirName cannot contain path, only the name of one directory, or .. to change to one directory level up.");
+            CommandHelp("{ MKDIR | MD } DirName", "Create a new directory in the current directory on the server. DirName cannot contain path, only directory name.");
+            CommandHelp("{ RMDIR | RD } DirName", "Remove a directory from the current directory on the server. DirName cannot contain path, only directory name. The directory should be empty or the operation will fail.");
+            CommandHelp("DEL FileName", "Delete a file from the current directory on the server. Filename cannot contain path, only file name.");
+            CommandHelp("LCD [ Path ]", "Change curernt local directory on the client. The path is optional. If it is missing then the current local directory on the client is printed to the console.");
+            CommandHelp("EXIT", "Terminate application");
+            CommandHelp("{ HELP | ? }", "Print this help message.");
+            CommandHelp("!command", "Executes the specified command on the client.");
+            Console.ForegroundColor = prevColor;
         }
 
         private bool ExecCMD(string cmd, string param)
