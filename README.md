@@ -1,6 +1,6 @@
 # SFT - Simple File Transfer
 This application is meant to be used with Arduino Internet Recovery Box (IWG) project.
-Arduino Internet Recovery Box has an SD card that holds configurable parameters and various files
+Arduino Internet Recovery Box has an SD card that holds configuration parameters and various files
 that are used in order to present the web (HTML) interface of the application. The SFT applicatinon
 is used in order to transfer files between the SD card on the Arduino (called the server) and the PC where 
 the SFT application is running (called the client). This application saves the need to extract the SD card from the Arduino, 
