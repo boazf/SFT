@@ -2,9 +2,9 @@
 This application is meant to be used with Arduino Internet Recovery Box (IWG) project.
 Arduino Internet Recovery Box has an SD card that holds configurable parameters and various files
 that are used in order to present the web (HTML) interface of the application. The SFT applicatinon
-is used in order to upload or download file to/from the SD card on the Arduino (called the server) ad the PC where 
+is used in order to transfer files between the SD card on the Arduino (called the server) and the PC where 
 the SFT application is running (called the client). This application saves the need to extract the SD card from the Arduino, 
-stick it in an SD card reader in the PC, transfter whatever files and then stick it back in the Arduino card reader.</br></br>
+stick it in an SD card reader in the PC, transfter the files and then stick it back in the Arduino card reader.</br></br>
 The application works as a very simple command shell. The available commands are as follows:</br></br>
 **{ CONNECT | OPEN } IPAddress** - Connect to server with specified IP address</br>
 **{ DISCONNECT | DISCO }** - Disconnect from server.</br>
